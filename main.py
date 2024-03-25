@@ -27,7 +27,7 @@ def union_contact(contacts: list):
     return result_list
 
 
-def create_contact(contact_list: list):
+def create_contact(contact_list: list) -> object:
     phone_pattern = re.compile(
         r'(\+7|8)?\s*\(?(\d{3})\)?\s*\D?(\d{3})[-\s+]?(\d{2})-?(\d{2})((\s)?\(?(доб.)?\s?(\d+)\)?)?')
     phone_substitution = r'+7-(\2) \3-\4-\5'
@@ -42,7 +42,11 @@ def create_contact(contact_list: list):
 
 
 pprint(create_contact(contacts_list))
-Changed_list= create_contact(contacts_list)
+Changed_list = create_contact(contacts_list)
+
+if __name__ == '__main__':
+    union_contact(contacts_list)
+    create_contact(contacts_list)
 
 with open("phonebook.csv", "w", encoding="utf-8") as f:
     datawriter = csv.writer(f, delimiter=',')
